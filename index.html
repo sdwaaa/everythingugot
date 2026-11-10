@@ -97,10 +97,11 @@
     <div class="card feat"><div class="ic">🆕</div><div class="body"><h3 data-i18n="f3_t"></h3><p data-i18n="f3_d"></p></div></div>
     <div class="card feat"><div class="ic">🖼</div><div class="body"><h3 data-i18n="f4_t"></h3><p data-i18n="f4_d"></p></div></div>
     <div class="card feat"><div class="ic">🧰</div><div class="body"><h3 data-i18n="f5_t"></h3><p data-i18n="f5_d"></p></div></div>
+    <div class="section-title" data-i18n="b_caps"></div>
+    <div class="caps" id="caps-inline"></div>
   </div>
 
   <div class="panel" id="panel-more">
-    <button class="wide" data-modal="caps"><span class="ic">📋</span><span data-i18n="b_caps"></span></button>
     <button class="wide" data-modal="agreement"><span class="ic">📄</span><span data-i18n="b_agreement"></span></button>
     <p class="note" data-i18n="note_more"></p>
   </div>
@@ -118,7 +119,7 @@
   var api = (API_BASE && INITDATA);
 
   var I18N = {
-    ru: { hero:"Архив бизнес-чатов · перехват удалённого и изменённого", tab_sub:"💎 Подписка", tab_account:"👤 Аккаунт", tab_features:"🧩 Возможности", tab_more:"⋯ Ещё",
+    ru: { hero:"Архив бизнес-чатов · перехват удалённого и изменённого", tab_sub:"💎 Подписка", tab_account:"👤 Аккаунт", tab_features:"🧩 Возможности", tab_more:"📄 Документация",
       st_tariffs:"Тарифы · Telegram Stars ⭐", t1_t:"1 месяц", t1_d:"Полный доступ на 30 дней", t3_t:"3 месяца", t3_d:"Выгоднее на 15%", t12_t:"1 год", t12_d:"Максимальная экономия", badge:"выгодно",
       st_discount:"Скидка", b_promo:"Ввести промокод", note_sub:"Оплата в Telegram Stars прямо здесь. Промокод и подарок оформляются в боте.",
       b_status:"Мой статус подписки", b_invite:"Пригласить друга (+7 дней)", b_gift:"Подарить подписку", note_account:"Приглашение показывается здесь. Статус и подарок — в боте.",
@@ -163,7 +164,7 @@
         '<h3>4. Ограничения</h3><p>Сервис «как есть», без гарантий; часть функций зависит от ограничений Telegram.</p>'+
         '<h3>5. Оплата</h3><p>Подписка оплачивается через Telegram Stars (⭐).</p>'+
         '<h3>6. Изменения</h3><p>Условия могут обновляться; продолжение использования = согласие. Не согласны — прекратите использование.</p>' },
-    en: { hero:"Business chat archive · catch deleted & edited", tab_sub:"💎 Subscription", tab_account:"👤 Account", tab_features:"🧩 Features", tab_more:"⋯ More",
+    en: { hero:"Business chat archive · catch deleted & edited", tab_sub:"💎 Subscription", tab_account:"👤 Account", tab_features:"🧩 Features", tab_more:"📄 Documentation",
       st_tariffs:"Plans · Telegram Stars ⭐", t1_t:"1 month", t1_d:"Full access for 30 days", t3_t:"3 months", t3_d:"15% cheaper", t12_t:"1 year", t12_d:"Best value", badge:"best",
       st_discount:"Discount", b_promo:"Enter promo code", note_sub:"Pay with Telegram Stars here. Promo code and gifting are done in the bot.",
       b_status:"My subscription status", b_invite:"Invite a friend (+7 days)", b_gift:"Gift a subscription", note_account:"Invite link shows here. Status and gifting are in the bot.",
@@ -199,7 +200,7 @@
         '<div class="row"><span class="e">🎵</span><p><b>Inline track search</b> — in any chat type <code>@bot_name name</code> and send the track right into the conversation.</p></div>'+
         '<h3>Archive organization (needs Threaded Mode)</h3>'+
         '<div class="row"><span class="e">🗂</span><p><b>Thread per contact</b> — each person gets their own topic in the chat with the bot with a pinned card; deletions, edits and view-once photos go there.</p></div>'+
-        '<div class="row"><span class="e">🔎</span><p><code>/search word</code> — search the whole archive. <code>/export</code> inside a thread — dump that contact\\'s chat.</p></div>'+
+        '<div class="row"><span class="e">🔎</span><p><code>/search word</code> — search the whole archive. <code>/export</code> inside a thread — dump the chat with that contact.</p></div>'+
         '<div class="row"><span class="e">🗄</span><p><code>/backup</code> — dump the whole database (owner). 🗓 A daily summary: deletions, edits, new contacts.</p></div>',
       agr_html:'<p>By starting and continuing to use the bot, you accept these terms.</p>'+
         '<h3>1. Purpose</h3><p>A private archive of your business chats: storing messages, available media and metadata, notifications about edits and deletions. Telegram Premium and bot connection are required.</p>'+
@@ -208,7 +209,7 @@
         '<h3>4. Limitations</h3><p>The service is provided "as is", without warranty; some features depend on Telegram limitations.</p>'+
         '<h3>5. Payment</h3><p>Subscription is paid via Telegram Stars (⭐).</p>'+
         '<h3>6. Changes</h3><p>Terms may change; continued use = acceptance. If you disagree, stop using the bot.</p>' },
-    uk: { hero:"Архів бізнес-чатів · перехоплення видаленого та зміненого", tab_sub:"💎 Передплата", tab_account:"👤 Акаунт", tab_features:"🧩 Можливості", tab_more:"⋯ Ще",
+    uk: { hero:"Архів бізнес-чатів · перехоплення видаленого та зміненого", tab_sub:"💎 Передплата", tab_account:"👤 Акаунт", tab_features:"🧩 Можливості", tab_more:"📄 Документація",
       st_tariffs:"Тарифи · Telegram Stars ⭐", t1_t:"1 місяць", t1_d:"Повний доступ на 30 днів", t3_t:"3 місяці", t3_d:"Вигідніше на 15%", t12_t:"1 рік", t12_d:"Максимальна економія", badge:"вигідно",
       st_discount:"Знижка", b_promo:"Ввести промокод", note_sub:"Оплата в Telegram Stars тут. Промокод і подарунок — у боті.",
       b_status:"Мій статус передплати", b_invite:"Запросити друга (+7 днів)", b_gift:"Подарувати передплату", note_account:"Запрошення показується тут. Статус і подарунок — у боті.",
@@ -253,7 +254,7 @@
         '<h3>4. Обмеження</h3><p>Сервіс «як є», без гарантій; частина функцій залежить від обмежень Telegram.</p>'+
         '<h3>5. Оплата</h3><p>Передплата оплачується через Telegram Stars (⭐).</p>'+
         '<h3>6. Зміни</h3><p>Умови можуть оновлюватися; продовження користування = згода. Не згодні — припиніть користування.</p>' },
-    pl: { hero:"Archiwum czatów biznesowych · przechwytywanie usuniętych i zmienionych", tab_sub:"💎 Subskrypcja", tab_account:"👤 Konto", tab_features:"🧩 Możliwości", tab_more:"⋯ Więcej",
+    pl: { hero:"Archiwum czatów biznesowych · przechwytywanie usuniętych i zmienionych", tab_sub:"💎 Subskrypcja", tab_account:"👤 Konto", tab_features:"🧩 Możliwości", tab_more:"📄 Dokumentacja",
       st_tariffs:"Plany · Telegram Stars ⭐", t1_t:"1 miesiąc", t1_d:"Pełny dostęp na 30 dni", t3_t:"3 miesiące", t3_d:"Taniej o 15%", t12_t:"1 rok", t12_d:"Najkorzystniej", badge:"hit",
       st_discount:"Rabat", b_promo:"Wpisz kod promocyjny", note_sub:"Płatność w Telegram Stars tutaj. Kod i prezent — w bocie.",
       b_status:"Mój status subskrypcji", b_invite:"Zaproś znajomego (+7 dni)", b_gift:"Podaruj subskrypcję", note_account:"Link z zaproszeniem jest tutaj. Status i prezent — w bocie.",
@@ -314,6 +315,7 @@
     LANG = I18N[code] ? code : 'ru';
     try { localStorage.setItem('eug_lang', LANG); } catch(e){}
     document.querySelectorAll('[data-i18n]').forEach(function(el){ el.textContent = T(el.getAttribute('data-i18n')); });
+    var ci=document.getElementById('caps-inline'); if(ci) ci.innerHTML=T('caps_html');
     document.querySelectorAll('.langbar button').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===LANG); });
     document.documentElement.lang = LANG;
   }
