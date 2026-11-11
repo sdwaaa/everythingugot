@@ -55,6 +55,7 @@
   .act { display:flex; gap:10px; margin-top:8px; } .act button { flex:1; border:none; border-radius:12px; padding:12px; font-size:14px; font-weight:700; color:#fff; cursor:pointer; background:linear-gradient(120deg,#1e6bff,#36d1ff); box-shadow:0 4px 14px rgba(30,120,255,.4); }
   .inp { width:100%; padding:12px; border-radius:12px; border:1px solid var(--glass-border); background:rgba(5,12,30,.6); color:#eaf2ff; font-size:15px; margin:8px 0; outline:none; }
   .inp:focus { border-color:var(--neon); box-shadow:var(--glow); }
+  .cl { display:block; font-size:13px; color:#9fb0cf; margin:6px 2px 0; }
 </style>
 </head>
 <body>
@@ -69,6 +70,8 @@
     <button class="tab active" data-tab="sub" data-i18n="tab_sub"></button>
     <button class="tab" data-tab="account" data-i18n="tab_account"></button>
     <button class="tab" data-tab="features" data-i18n="tab_features"></button>
+    <button class="tab" data-tab="cal" data-i18n="tab_cal"></button>
+    <button class="tab" data-tab="water" data-i18n="tab_water"></button>
     <button class="tab" data-tab="more" data-i18n="tab_more"></button>
   </div>
 
@@ -101,6 +104,36 @@
     <div class="caps" id="caps-inline"></div>
   </div>
 
+  <div class="panel" id="panel-cal">
+    <div class="section-title" data-i18n="cal_calc"></div>
+    <label class="cl" data-i18n="cal_sex"></label>
+    <select id="cxSex" class="inp"><option value="m" data-i18n="cal_m"></option><option value="f" data-i18n="cal_f"></option></select>
+    <label class="cl" data-i18n="cal_age"></label><input id="cxAge" class="inp" inputmode="numeric" value="30">
+    <label class="cl" data-i18n="cal_height"></label><input id="cxH" class="inp" inputmode="numeric" value="175">
+    <label class="cl" data-i18n="cal_weight"></label><input id="cxW" class="inp" inputmode="numeric" value="75">
+    <label class="cl" data-i18n="cal_act"></label>
+    <select id="cxAct" class="inp"><option value="1.2" data-i18n="cal_a1"></option><option value="1.375" data-i18n="cal_a2"></option><option value="1.55" data-i18n="cal_a3"></option><option value="1.725" data-i18n="cal_a4"></option><option value="1.9" data-i18n="cal_a5"></option></select>
+    <label class="cl" data-i18n="cal_goal"></label>
+    <select id="cxGoal" class="inp"><option value="lose" data-i18n="cal_g1"></option><option value="keep" data-i18n="cal_g2"></option><option value="gain" data-i18n="cal_g3"></option></select>
+    <button class="wide" id="cxCalc" data-i18n="cal_calc_btn"></button>
+    <div id="cxRes" class="note"></div>
+    <div class="section-title" data-i18n="cal_log"></div>
+    <div style="display:flex;gap:8px"><input id="cxIn" class="inp" inputmode="numeric" style="flex:1" placeholder="kcal"><button class="wide" id="cxAdd" style="width:auto;white-space:nowrap" data-i18n="cal_add"></button></div>
+    <div id="cxStat" class="note"></div>
+    <button class="wide" id="cxReset" data-i18n="cal_reset"></button>
+    <p class="note" data-i18n="cal_hint"></p>
+  </div>
+
+  <div class="panel" id="panel-water">
+    <div class="section-title" data-i18n="wtr_title"></div>
+    <label class="cl" data-i18n="wtr_ml"></label><input id="wtrMl" class="inp" inputmode="numeric" value="2000">
+    <label class="cl" data-i18n="wtr_from"></label><input id="wtrFrom" class="inp" type="time" value="10:00">
+    <label class="cl" data-i18n="wtr_to"></label><input id="wtrTo" class="inp" type="time" value="22:00">
+    <button class="wide" id="wtrOn" data-i18n="wtr_on"></button>
+    <button class="wide" id="wtrOff" data-i18n="wtr_off"></button>
+    <p class="note" data-i18n="wtr_hint"></p>
+  </div>
+
   <div class="panel" id="panel-more">
     <button class="wide" data-modal="agreement"><span class="ic">📄</span><span data-i18n="b_agreement"></span></button>
     <p class="note" data-i18n="note_more"></p>
@@ -130,6 +163,7 @@
       promo_h:"🎟 Промокод", promo_in:"КОД", promo_apply:"Применить", promo_ok:"✅ Скидка", promo_pick:"%! Выберите тариф на вкладке «Подписка».", promo_bad:"❌ Код не найден, истёк или исчерпан.",
       gift_h:"🎁 Подарить подписку", gift_p:"ID друга (узнать через @userinfobot):", gift_save:"Сохранить", gift_ok:"✅ Готово! Выберите тариф — оплата уйдёт в подарок.", gift_bad:"❌ Нужен числовой ID.",
       paid:"🎉 Оплата прошла! Подписка активирована.", payfail:"Оплата не прошла. Попробуйте ещё раз.",
+      tab_cal:"🍎 Калории", tab_water:"💧 Вода", cal_calc:"Калькулятор нормы", cal_sex:"Пол", cal_m:"Мужской", cal_f:"Женский", cal_age:"Возраст", cal_height:"Рост, см", cal_weight:"Вес, кг", cal_act:"Активность", cal_a1:"Минимум (сидячий)", cal_a2:"Лёгкая", cal_a3:"Средняя", cal_a4:"Высокая", cal_a5:"Очень высокая", cal_goal:"Цель", cal_g1:"Похудеть", cal_g2:"Держать вес", cal_g3:"Набрать", cal_calc_btn:"Рассчитать", cal_norm:"Ваша норма", cal_kcal:"ккал/день", cal_u:"ккал", cal_log:"Дневник на сегодня", cal_add:"Добавить", cal_eaten:"Съедено", cal_left:"Осталось", cal_reset:"Сбросить день", cal_hint:"Данные хранятся только на вашем устройстве.", wtr_title:"💧 Напоминания пить воду", wtr_ml:"Сколько воды в день, мл", wtr_from:"С (время)", wtr_to:"До (время)", wtr_on:"Включить напоминания", wtr_off:"Выключить", wtr_hint:"Бот будет писать в чат в течение дня. Кнопка откроет чат с ботом для подтверждения.",
       caps_html:'<h3>Автоматически (бизнес-чаты)</h3>'+
         '<div class="row"><span class="e">🗑</span><p><b>Удалённые</b> — пришлю, что собеседник стёр.</p></div>'+
         '<div class="row"><span class="e">✏️</span><p><b>Изменённые</b> — покажу «было → стало».</p></div>'+
@@ -166,7 +200,8 @@
         '<h3>3. Ваша ответственность</h3><p>Вы используете бота только в законных целях и обязаны соблюдать законы о тайне связи и защите персональных данных. Вы подтверждаете право архивировать свои переписки и несёте полную ответственность.</p>'+
         '<h3>4. Ограничения</h3><p>Сервис «как есть», без гарантий; часть функций зависит от ограничений Telegram.</p>'+
         '<h3>5. Оплата</h3><p>Подписка оплачивается через Telegram Stars (⭐).</p>'+
-        '<h3>6. Изменения</h3><p>Условия могут обновляться; продолжение использования = согласие. Не согласны — прекратите использование.</p>' },
+        '<h3>6. Изменения</h3><p>Условия могут обновляться; продолжение использования = согласие. Не согласны — прекратите использование.</p>'+
+        '<h3>7. Скачивание</h3><p>Инструменты скачивания (видео, музыка, трек целиком) берут контент из сторонних источников. Ответственность за скачивание и использование такого контента, включая авторские права, полностью несёт пользователь.</p>' },
     en: { hero:"Business chat archive · catch deleted & edited", tab_sub:"💎 Subscription", tab_account:"👤 Account", tab_features:"🧩 Features", tab_more:"📄 Documentation",
       st_tariffs:"Plans · Telegram Stars ⭐", t1_t:"1 month", t1_d:"Full access for 30 days", t3_t:"3 months", t3_d:"15% cheaper", t12_t:"1 year", t12_d:"Best value", badge:"best",
       st_discount:"Discount", b_promo:"Enter promo code", note_sub:"Pay with Telegram Stars here. Promo code and gifting are done in the bot.",
@@ -178,6 +213,7 @@
       promo_h:"🎟 Promo code", promo_in:"CODE", promo_apply:"Apply", promo_ok:"✅ Discount", promo_pick:"%! Pick a plan on the Subscription tab.", promo_bad:"❌ Code not found, expired or used up.",
       gift_h:"🎁 Gift a subscription", gift_p:"Friend's ID (find via @userinfobot):", gift_save:"Save", gift_ok:"✅ Done! Pick a plan — payment goes as a gift.", gift_bad:"❌ Numeric ID required.",
       paid:"🎉 Payment done! Subscription activated.", payfail:"Payment failed. Please try again.",
+      tab_cal:"🍎 Calories", tab_water:"💧 Water", cal_calc:"Daily needs calculator", cal_sex:"Sex", cal_m:"Male", cal_f:"Female", cal_age:"Age", cal_height:"Height, cm", cal_weight:"Weight, kg", cal_act:"Activity", cal_a1:"Minimal (sedentary)", cal_a2:"Light", cal_a3:"Moderate", cal_a4:"High", cal_a5:"Very high", cal_goal:"Goal", cal_g1:"Lose", cal_g2:"Maintain", cal_g3:"Gain", cal_calc_btn:"Calculate", cal_norm:"Your target", cal_kcal:"kcal/day", cal_u:"kcal", cal_log:"Today's log", cal_add:"Add", cal_eaten:"Eaten", cal_left:"Left", cal_reset:"Reset day", cal_hint:"Data is stored only on your device.", wtr_title:"💧 Water reminders", wtr_ml:"Water per day, ml", wtr_from:"From (time)", wtr_to:"To (time)", wtr_on:"Turn on reminders", wtr_off:"Turn off", wtr_hint:"The bot will message you through the day. The button opens the chat with the bot to confirm.",
       caps_html:'<h3>Automatic (business chats)</h3>'+
         '<div class="row"><span class="e">🗑</span><p><b>Deleted</b> — I send what the other person erased.</p></div>'+
         '<div class="row"><span class="e">✏️</span><p><b>Edited</b> — I show was → now.</p></div>'+
@@ -214,7 +250,8 @@
         '<h3>3. Your responsibility</h3><p>You use the bot only for lawful purposes and must comply with laws on privacy and personal data. You confirm your right to archive your own chats and take full responsibility.</p>'+
         '<h3>4. Limitations</h3><p>The service is provided "as is", without warranty; some features depend on Telegram limitations.</p>'+
         '<h3>5. Payment</h3><p>Subscription is paid via Telegram Stars (⭐).</p>'+
-        '<h3>6. Changes</h3><p>Terms may change; continued use = acceptance. If you disagree, stop using the bot.</p>' },
+        '<h3>6. Changes</h3><p>Terms may change; continued use = acceptance. If you disagree, stop using the bot.</p>'+
+        '<h3>7. Downloads</h3><p>Download tools (video, music, full track) fetch content from third-party sources. You are solely responsible for downloading and using such content, including copyright.</p>' },
     uk: { hero:"Архів бізнес-чатів · перехоплення видаленого та зміненого", tab_sub:"💎 Передплата", tab_account:"👤 Акаунт", tab_features:"🧩 Можливості", tab_more:"📄 Документація",
       st_tariffs:"Тарифи · Telegram Stars ⭐", t1_t:"1 місяць", t1_d:"Повний доступ на 30 днів", t3_t:"3 місяці", t3_d:"Вигідніше на 15%", t12_t:"1 рік", t12_d:"Максимальна економія", badge:"вигідно",
       st_discount:"Знижка", b_promo:"Ввести промокод", note_sub:"Оплата в Telegram Stars тут. Промокод і подарунок — у боті.",
@@ -226,6 +263,7 @@
       promo_h:"🎟 Промокод", promo_in:"КОД", promo_apply:"Застосувати", promo_ok:"✅ Знижка", promo_pick:"%! Оберіть тариф на вкладці «Передплата».", promo_bad:"❌ Код не знайдено, прострочено або вичерпано.",
       gift_h:"🎁 Подарувати передплату", gift_p:"ID друга (дізнатись через @userinfobot):", gift_save:"Зберегти", gift_ok:"✅ Готово! Оберіть тариф — оплата піде в подарунок.", gift_bad:"❌ Потрібен числовий ID.",
       paid:"🎉 Оплата пройшла! Передплату активовано.", payfail:"Оплата не пройшла. Спробуйте ще раз.",
+      tab_cal:"🍎 Калорії", tab_water:"💧 Вода", cal_calc:"Калькулятор норми", cal_sex:"Стать", cal_m:"Чоловіча", cal_f:"Жіноча", cal_age:"Вік", cal_height:"Зріст, см", cal_weight:"Вага, кг", cal_act:"Активність", cal_a1:"Мінімум (сидячий)", cal_a2:"Легка", cal_a3:"Середня", cal_a4:"Висока", cal_a5:"Дуже висока", cal_goal:"Мета", cal_g1:"Схуднути", cal_g2:"Тримати вагу", cal_g3:"Набрати", cal_calc_btn:"Розрахувати", cal_norm:"Ваша норма", cal_kcal:"ккал/день", cal_u:"ккал", cal_log:"Щоденник на сьогодні", cal_add:"Додати", cal_eaten:"З'їдено", cal_left:"Залишилось", cal_reset:"Скинути день", cal_hint:"Дані зберігаються лише на вашому пристрої.", wtr_title:"💧 Нагадування пити воду", wtr_ml:"Скільки води на день, мл", wtr_from:"З (час)", wtr_to:"До (час)", wtr_on:"Увімкнути нагадування", wtr_off:"Вимкнути", wtr_hint:"Бот писатиме в чат протягом дня. Кнопка відкриє чат з ботом для підтвердження.",
       caps_html:'<h3>Автоматично (бізнес-чати)</h3>'+
         '<div class="row"><span class="e">🗑</span><p><b>Видалені</b> — надішлю те, що співрозмовник стер.</p></div>'+
         '<div class="row"><span class="e">✏️</span><p><b>Змінені</b> — покажу «було → стало».</p></div>'+
@@ -262,7 +300,8 @@
         '<h3>3. Ваша відповідальність</h3><p>Ви використовуєте бота лише із законною метою й зобов\'язані дотримуватися законів про таємницю зв\'язку та захист персональних даних. Ви підтверджуєте право архівувати свої листування й несете повну відповідальність.</p>'+
         '<h3>4. Обмеження</h3><p>Сервіс «як є», без гарантій; частина функцій залежить від обмежень Telegram.</p>'+
         '<h3>5. Оплата</h3><p>Передплата оплачується через Telegram Stars (⭐).</p>'+
-        '<h3>6. Зміни</h3><p>Умови можуть оновлюватися; продовження користування = згода. Не згодні — припиніть користування.</p>' },
+        '<h3>6. Зміни</h3><p>Умови можуть оновлюватися; продовження користування = згода. Не згодні — припиніть користування.</p>'+
+        '<h3>7. Завантаження</h3><p>Інструменти завантаження (відео, музика, трек цілком) беруть контент зі сторонніх джерел. Відповідальність за завантаження та використання такого контенту, включно з авторськими правами, повністю несе користувач.</p>' },
     pl: { hero:"Archiwum czatów biznesowych · przechwytywanie usuniętych i zmienionych", tab_sub:"💎 Subskrypcja", tab_account:"👤 Konto", tab_features:"🧩 Możliwości", tab_more:"📄 Dokumentacja",
       st_tariffs:"Plany · Telegram Stars ⭐", t1_t:"1 miesiąc", t1_d:"Pełny dostęp na 30 dni", t3_t:"3 miesiące", t3_d:"Taniej o 15%", t12_t:"1 rok", t12_d:"Najkorzystniej", badge:"hit",
       st_discount:"Rabat", b_promo:"Wpisz kod promocyjny", note_sub:"Płatność w Telegram Stars tutaj. Kod i prezent — w bocie.",
@@ -274,6 +313,7 @@
       promo_h:"🎟 Kod promocyjny", promo_in:"KOD", promo_apply:"Zastosuj", promo_ok:"✅ Rabat", promo_pick:"%! Wybierz plan w zakładce Subskrypcja.", promo_bad:"❌ Kod nieznany, wygasł lub wyczerpany.",
       gift_h:"🎁 Podaruj subskrypcję", gift_p:"ID znajomego (sprawdź przez @userinfobot):", gift_save:"Zapisz", gift_ok:"✅ Gotowe! Wybierz plan — płatność pójdzie jako prezent.", gift_bad:"❌ Wymagane ID liczbowe.",
       paid:"🎉 Płatność udana! Subskrypcja aktywna.", payfail:"Płatność nieudana. Spróbuj ponownie.",
+      tab_cal:"🍎 Kalorie", tab_water:"💧 Woda", cal_calc:"Kalkulator zapotrzebowania", cal_sex:"Płeć", cal_m:"Mężczyzna", cal_f:"Kobieta", cal_age:"Wiek", cal_height:"Wzrost, cm", cal_weight:"Waga, kg", cal_act:"Aktywność", cal_a1:"Minimalna (siedząca)", cal_a2:"Lekka", cal_a3:"Średnia", cal_a4:"Wysoka", cal_a5:"Bardzo wysoka", cal_goal:"Cel", cal_g1:"Schudnąć", cal_g2:"Utrzymać", cal_g3:"Przytyć", cal_calc_btn:"Oblicz", cal_norm:"Twój cel", cal_kcal:"kcal/dzień", cal_u:"kcal", cal_log:"Dziennik na dziś", cal_add:"Dodaj", cal_eaten:"Zjedzone", cal_left:"Pozostało", cal_reset:"Zresetuj dzień", cal_hint:"Dane są przechowywane tylko na Twoim urządzeniu.", wtr_title:"💧 Przypomnienia o wodzie", wtr_ml:"Ile wody dziennie, ml", wtr_from:"Od (godzina)", wtr_to:"Do (godzina)", wtr_on:"Włącz przypomnienia", wtr_off:"Wyłącz", wtr_hint:"Bot będzie pisać w ciągu dnia. Przycisk otworzy czat z botem w celu potwierdzenia.",
       caps_html:'<h3>Automatycznie (czaty biznesowe)</h3>'+
         '<div class="row"><span class="e">🗑</span><p><b>Usunięte</b> — prześlę to, co rozmówca skasował.</p></div>'+
         '<div class="row"><span class="e">✏️</span><p><b>Zmienione</b> — pokażę było → jest.</p></div>'+
@@ -310,7 +350,8 @@
         '<h3>3. Twoja odpowiedzialność</h3><p>Korzystasz z bota wyłącznie zgodnie z prawem i musisz przestrzegać przepisów o tajemnicy komunikacji i ochronie danych osobowych. Potwierdzasz prawo do archiwizacji własnych rozmów i ponosisz pełną odpowiedzialność.</p>'+
         '<h3>4. Ograniczenia</h3><p>Usługa „tak jak jest", bez gwarancji; część funkcji zależy od ograniczeń Telegrama.</p>'+
         '<h3>5. Płatność</h3><p>Subskrypcja opłacana przez Telegram Stars (⭐).</p>'+
-        '<h3>6. Zmiany</h3><p>Warunki mogą się zmieniać; dalsze korzystanie = akceptacja. Jeśli się nie zgadzasz, przestań korzystać.</p>' }
+        '<h3>6. Zmiany</h3><p>Warunki mogą się zmieniać; dalsze korzystanie = akceptacja. Jeśli się nie zgadzasz, przestań korzystać.</p>'+
+        '<h3>7. Pobieranie</h3><p>Narzędzia pobierania (wideo, muzyka, cały utwór) pobierają treści ze źródeł zewnętrznych. Odpowiedzialność za pobieranie i korzystanie z takich treści, w tym prawa autorskie, ponosi wyłącznie użytkownik.</p>' }
   };
 
   var LANG = "ru";
@@ -385,6 +426,50 @@
 
   document.querySelectorAll('[data-link]').forEach(function(b){ b.addEventListener('click', function(){ var k=b.getAttribute('data-link'); if(api){ if(k==='status') return showStatus(); if(k==='promo') return promoModal(); if(k==='gift') return giftModal(); } openBot(k); }); });
   function openBot(p){ var u='https://t.me/'+BOT+'?start='+p; if(tg&&tg.openTelegramLink) tg.openTelegramLink(u); else window.open(u,'_blank'); }
+
+  // ===== Калькулятор и дневник калорий (всё локально, без сервера) =====
+  function calKey(){ var d=new Date(); return 'eug_cal_'+d.getFullYear()+'_'+(d.getMonth()+1)+'_'+d.getDate(); }
+  function calGet(k,def){ try{ var v=localStorage.getItem(k); return v===null?def:+v; }catch(e){ return def; } }
+  function calSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  function calcNorm(){
+    var age=+document.getElementById('cxAge').value, h=+document.getElementById('cxH').value, w=+document.getElementById('cxW').value;
+    if(!age||!h||!w){ return; }
+    var sex=document.getElementById('cxSex').value;
+    var bmr=10*w+6.25*h-5*age+(sex==='m'?5:-161);
+    var tdee=bmr*(+document.getElementById('cxAct').value);
+    var g=document.getElementById('cxGoal').value;
+    var target=Math.round(tdee+(g==='lose'?-500:(g==='gain'?400:0)));
+    calSet('eug_cal_target', target);
+    document.getElementById('cxRes').innerHTML='<b>'+T('cal_norm')+': '+target+' '+T('cal_kcal')+'</b>';
+    renderCal();
+  }
+  function renderCal(){
+    var eaten=calGet(calKey(),0), target=calGet('eug_cal_target',0);
+    var el=document.getElementById('cxStat'); if(!el) return;
+    var s=T('cal_eaten')+': <b>'+eaten+'</b> '+T('cal_u');
+    if(target) s+='<br>'+T('cal_left')+': <b>'+Math.max(0,target-eaten)+'</b> '+T('cal_u');
+    el.innerHTML=s;
+  }
+  (function(){
+    var b=document.getElementById('cxCalc'); if(b) b.onclick=calcNorm;
+    var a=document.getElementById('cxAdd'); if(a) a.onclick=function(){ var v=+document.getElementById('cxIn').value; if(v){ calSet(calKey(), calGet(calKey(),0)+v); document.getElementById('cxIn').value=''; renderCal(); } };
+    var r=document.getElementById('cxReset'); if(r) r.onclick=function(){ calSet(calKey(),0); renderCal(); };
+    var t=calGet('eug_cal_target',0); if(t) document.getElementById('cxRes').innerHTML='<b>'+T('cal_norm')+': '+t+' '+T('cal_kcal')+'</b>';
+    renderCal();
+  })();
+
+  // Вода: настройка открывает бота deep-link'ом (работает без сервера/туннеля).
+  (function(){
+    function hhmm(v){ return (v||'').replace(':',''); }
+    var on=document.getElementById('wtrOn');
+    if(on) on.onclick=function(){
+      var ml=+document.getElementById('wtrMl').value;
+      var f=hhmm(document.getElementById('wtrFrom').value), t=hhmm(document.getElementById('wtrTo').value);
+      if(ml>=200 && f.length===4 && t.length===4) openBot('water_'+ml+'_'+f+'_'+t);
+    };
+    var off=document.getElementById('wtrOff');
+    if(off) off.onclick=function(){ openBot('water_off'); };
+  })();
 
   LANG = pickLang(); setLang(LANG);
 </script>
