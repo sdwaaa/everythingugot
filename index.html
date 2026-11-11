@@ -9,7 +9,7 @@
   :root { --text:#efeaff; --hint:#b3a6d9; --glass:rgba(32,22,64,.55); --glass-border:rgba(150,120,255,.22); --neon:#a07bff; --neon2:#6d3cff; --glow:0 0 18px rgba(124,77,255,.45); }
   * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   html,body { height:100%; }
-  body { margin:0 auto; padding:0 16px 40px; max-width:680px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; color:var(--text); background:linear-gradient(135deg,#07050f,#140a33,#0c0624,#1e0f4d,#08051a); background-size:400% 400%; animation:bgshift 18s ease infinite; min-height:100vh; }
+  body { margin:0 auto; padding:0 16px calc(80px + env(safe-area-inset-bottom)); max-width:680px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; color:var(--text); background:linear-gradient(135deg,#07050f,#140a33,#0c0624,#1e0f4d,#08051a); background-size:400% 400%; animation:bgshift 18s ease infinite; min-height:100vh; }
   @keyframes bgshift {0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
   @keyframes shimmer {0%{background-position:0% 50%}100%{background-position:200% 50%}}
   .hero { margin:0 -16px 16px; padding:30px 16px 20px; display:flex; flex-direction:column; align-items:center; gap:12px; border-radius:0 0 28px 28px; background:radial-gradient(120% 90% at 50% -10%, rgba(124,77,255,.32), rgba(10,8,24,0) 62%), linear-gradient(180deg,#0e0a24,#08060f); box-shadow:0 10px 40px rgba(70,30,160,.3); }
