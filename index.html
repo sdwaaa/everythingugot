@@ -435,6 +435,9 @@
   function calKey(){ var d=new Date(); return 'eug_cal_'+d.getFullYear()+'_'+(d.getMonth()+1)+'_'+d.getDate(); }
   function calGet(k,def){ try{ var v=localStorage.getItem(k); return v===null?def:+v; }catch(e){ return def; } }
   function calSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  var CAL_FIELDS=['cxSex','cxAge','cxH','cxW','cxAct','cxGoal'];
+  function calSaveProfile(){ try{ var o={}; CAL_FIELDS.forEach(function(id){ var el=document.getElementById(id); if(el) o[id]=el.value; }); localStorage.setItem('eug_cal_profile', JSON.stringify(o)); }catch(e){} }
+  function calLoadProfile(){ try{ var o=JSON.parse(localStorage.getItem('eug_cal_profile')||'null'); if(!o) return; CAL_FIELDS.forEach(function(id){ var el=document.getElementById(id); if(el&&o[id]!=null&&o[id]!=='') el.value=o[id]; }); }catch(e){} }
   function calcNorm(){
     var age=+document.getElementById('cxAge').value, h=+document.getElementById('cxH').value, w=+document.getElementById('cxW').value;
     if(!age||!h||!w){ return; }
@@ -444,6 +447,7 @@
     var g=document.getElementById('cxGoal').value;
     var target=Math.round(tdee+(g==='lose'?-500:(g==='gain'?400:0)));
     calSet('eug_cal_target', target);
+    calSaveProfile();
     document.getElementById('cxRes').innerHTML='<b>'+T('cal_norm')+': '+target+' '+T('cal_kcal')+'</b>';
     renderCal();
   }
@@ -455,6 +459,8 @@
     el.innerHTML=s;
   }
   (function(){
+    calLoadProfile();  // восстанавливаем сохранённые пол/возраст/рост/вес/активность/цель
+    CAL_FIELDS.forEach(function(id){ var el=document.getElementById(id); if(el) el.addEventListener('change', calSaveProfile); });
     var b=document.getElementById('cxCalc'); if(b) b.onclick=calcNorm;
     var a=document.getElementById('cxAdd'); if(a) a.onclick=function(){ var v=+document.getElementById('cxIn').value; if(v){ calSet(calKey(), calGet(calKey(),0)+v); document.getElementById('cxIn').value=''; renderCal(); } };
     var r=document.getElementById('cxReset'); if(r) r.onclick=function(){ calSet(calKey(),0); renderCal(); };
